@@ -136,7 +136,7 @@ export function sameType(questions: Question[]): boolean {
  * you defined in the `objects.ts` file.
  */
 
-///THIS ONE GIVING PROBLEM
+///THIS ONE GIVING ERROR
 export function addNewQuestion(
     questions: Question[],
     id: number,
