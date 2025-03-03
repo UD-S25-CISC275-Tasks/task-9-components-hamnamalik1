@@ -1,5 +1,6 @@
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
+import { duplicateQuestion, makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -136,7 +137,6 @@ export function sameType(questions: Question[]): boolean {
  * you defined in the `objects.ts` file.
  */
 
-///THIS ONE GIVING ERROR
 export function addNewQuestion(
     questions: Question[],
     id: number,
@@ -229,5 +229,15 @@ export function duplicateQuestionInArray(
     targetId: number,
     newId: number,
 ): Question[] {
-    return [];
+    let result: Question[] = [];
+
+    for (const q of questions) {
+        result.push(q); // Keep original question
+
+        if (q.id === targetId) {
+            result.push(duplicateQuestion(newId, q)); // Insert duplicate after original
+        }
+    }
+
+    return result;
 }
